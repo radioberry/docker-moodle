@@ -6,7 +6,7 @@ services:
   - docker
   
 before_script:
-  - docker build -t docker-aipo .
+  - docker build -t docker-moodle .
 
 script:
 - docker ps
