@@ -10,11 +10,21 @@ branches:
     - master
     - staging-ci
 
-before_script:
+install:
   - docker build -t docker-moodle .
+  
+before_script:
+  - docker run -d --name DB -p 3307:3307 -e MYSQL_DATABASE=moodle -e MYSQL_USER=moodle -e MYSQL_PASSWORD=moodle centurylink/mysql
+  - docker run -d -P --name moodle --link DB:DB -p 8080:80 docker-moodle
 
 script:
-- docker ps
+  - docker ps
+  - curl --version
+  - curl localhost:8080
 
+after_script:
+  - docker images
+  
 notifications:
   slack: diorama-radio:JaoyLeAlhZ8e6ugkadHEdteG
+  
