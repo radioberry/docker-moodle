@@ -15,3 +15,8 @@ before_script:
 
 script:
 - docker ps
+
+notifications:
+  slack:
+    on_success: always
+    on_failure: always
