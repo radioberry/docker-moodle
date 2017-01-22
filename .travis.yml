@@ -10,11 +10,18 @@ branches:
     - master
     - staging-ci
 
+install:
+  - git clone https://github.com/radioberry/docker-moodle.git
+
 before_script:
   - docker build -t docker-moodle .
 
 script:
 - docker ps
 
+after_script:
+  - docker images
+  
 notifications:
   slack: diorama-radio:JaoyLeAlhZ8e6ugkadHEdteG
+  
