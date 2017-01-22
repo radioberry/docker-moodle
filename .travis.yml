@@ -17,6 +17,4 @@ script:
 - docker ps
 
 notifications:
-  slack:
-    on_success: always
-    on_failure: always
+  slack: diorama-radio:JaoyLeAlhZ8e6ugkadHEdteG
