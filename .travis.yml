@@ -17,7 +17,7 @@ before_script:
   - docker build -t docker-moodle .
 
 script:
-- docker ps
+  - docker ps
 
 after_script:
   - docker images
