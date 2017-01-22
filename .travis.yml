@@ -5,6 +5,11 @@ sudo: required
 services:
   - docker
   
+branches:
+  only: 
+    - master
+    - staging-ci
+
 before_script:
   - docker build -t docker-moodle .
 
