@@ -12,7 +12,7 @@ branches:
 
 install:
 #  - docker build -t docker-moodle .
-  - docker-compose build .
+  - docker-compose build
 
 before_script:
 #  - docker run -d --name DB -p 3307:3307 -e MYSQL_DATABASE=moodle -e MYSQL_USER=moodle -e MYSQL_PASSWORD=moodle centurylink/mysql
