@@ -25,6 +25,7 @@ services:
        MYSQL_PASSWORD: moodle
      ports:
        - "3306:3306"
-     volumes:
-       - .data/moodledb:/var/lib/mysql
+# 導入時はコメントアウトする
+#      volumes:
+#        - .data/moodledb:/var/lib/mysql
      restart: always
