@@ -1,0 +1,30 @@
+version: '2'
+services:
+  moodle:
+    image: diorama/moodle
+    links:
+#      - DB
+      - moodle_db
+    environment:
+      MOODLE_URL: "https://example.com"
+      DB_PORT_3306_TCP_ADDR: moodle_db
+      DB_ENV_MYSQL_USER: moodle
+      DB_ENV_MYSQL_PASSWORD: moodle
+      DB_ENV_MYSQL_DATABASE: moodle
+    ports:
+      - "8082:80"
+    restart: always
+
+# 停止
+  moodle_db:
+     image: centurylink/mysql:latest
+     environment:
+       MYSQL_DATABASE: moodle
+       MYSQL_ROOT_PASSWORD: moodle
+       MYSQL_USER: moodle
+       MYSQL_PASSWORD: moodle
+     ports:
+       - "3306:3306"
+     volumes:
+       - .data/moodledb:/var/lib/mysql
+     restart: always
