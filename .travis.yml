@@ -11,11 +11,13 @@ branches:
     - staging-ci
 
 install:
-  - docker build -t docker-moodle .
-  
+#  - docker build -t docker-moodle .
+  - docker-compose build .
+
 before_script:
-  - docker run -d --name DB -p 3307:3307 -e MYSQL_DATABASE=moodle -e MYSQL_USER=moodle -e MYSQL_PASSWORD=moodle centurylink/mysql
-  - docker run -d -P --name moodle --link DB:DB -p 8080:80 docker-moodle
+#  - docker run -d --name DB -p 3307:3307 -e MYSQL_DATABASE=moodle -e MYSQL_USER=moodle -e MYSQL_PASSWORD=moodle centurylink/mysql
+#  - docker run -d -P --name moodle --link DB:DB -p 8080:80 docker-moodle
+  - docker-compose up -d
 
 script:
   - docker ps
