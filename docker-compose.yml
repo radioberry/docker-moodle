@@ -1,7 +1,7 @@
 version: '2'
 services:
   moodle:
-    image: diorama/moodle
+    image: diorama/moodle:latest
     links:
 #      - DB
       - moodle_db
