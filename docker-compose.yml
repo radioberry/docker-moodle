@@ -3,7 +3,6 @@ services:
   moodle:
     image: diorama/moodle:latest
     links:
-#      - DB
       - moodle_db
     environment:
       MOODLE_URL: "https://example.com"
@@ -13,9 +12,10 @@ services:
       DB_ENV_MYSQL_DATABASE: moodle
     ports:
       - "8080:80"
-    restart: always
+     volumes:
+       - .log:/var/log
+     restart: always
 
-# 停止
   moodle_db:
      image: centurylink/mysql:latest
      environment:
@@ -25,7 +25,6 @@ services:
        MYSQL_PASSWORD: moodle
      ports:
        - "3307:3307"
-# 導入時はコメントアウトする
-#      volumes:
-#        - .data/moodledb:/var/lib/mysql
+     volumes:
+       - .data/moodledb:/var/lib/mysql
      restart: always
