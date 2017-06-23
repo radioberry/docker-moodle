@@ -22,7 +22,7 @@ services:
       MYSQL_USER: moodle
       MYSQL_PASSWORD: moodle
     ports:
-      - "3306:3306"
+      - "3307:3307"
     volumes:
       - .data/moodledb:/var/lib/mysql
     restart: always
