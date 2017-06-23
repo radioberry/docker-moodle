@@ -25,7 +25,7 @@ You can visit the following URL in a browser to get started:
 
 https://moodle.example.com
 
-### NON-Domain
+### Combined with other domains
 ```
 docker-compose up -d moodle moodle_db
 ```
@@ -56,7 +56,7 @@ cd docker-moodle
 docker-compose build
 ```
 
-### NON-Domain
+### Combined with other domains
 ```
 git clone https://github.com/radioberry/docker-moodle.git
 cd docker-moodle
