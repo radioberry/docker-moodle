@@ -5,15 +5,25 @@
 
 ## Description
 
-## Demo
+Moodle - the world's open source learning platform
 
-## VS. 
+## Demo
 
 ## Requirement
 
 ## Usage
 
+```
+docker-compose up -d
+```
+
 ## Install
+
+```
+git clone https://github.com/radioberry/docker-moodle.git
+cd docker-moodle
+docker-compose build
+```
 
 ## Contribution
 
