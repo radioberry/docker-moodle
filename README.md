@@ -7,7 +7,7 @@
 
 Moodle - the world's open source learning platform
 
-docker:
+Configuration of docker-compose:
  - https-portal
  - moodle
  - mysql 
