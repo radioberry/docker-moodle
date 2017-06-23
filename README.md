@@ -17,6 +17,7 @@ docker:
 
 ## Usage
 
+### FULL
 ```
 docker-compose up -d
 ```
@@ -24,14 +25,38 @@ You can visit the following URL in a browser to get started:
 
 https://moodle.example.com
 
+### NON-Domain
+```
+docker-compose up -d moodle moodle_db
+```
+or
+Comment out docker-compose.yml's https-portal.
+```
+# https-portal:
+# ......
+# ......
+```
+
+AWS Route53>Cloudfront>EC2(docker):
+
+https://{AWSRoute53}
 
 ## Install
 
+### FULL
 ```
 git clone https://github.com/radioberry/docker-moodle.git
 cd docker-moodle
 docker-compose build
 ```
+
+### NON-Domain
+```
+git clone https://github.com/radioberry/docker-moodle.git
+cd docker-moodle
+docker-compose build moodle moodle_db
+```
+
 
 ## Deploy
 
