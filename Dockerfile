@@ -23,11 +23,11 @@ ENV MOODLE_URL http://localhost
 ADD ./foreground.sh /etc/apache2/foreground.sh
 
 RUN apt-get update && \
-	apt-get -y install mysql-client pwgen python-setuptools curl git unzip apache2 php5 \
-		php5-gd libapache2-mod-php5 postfix wget supervisor php5-pgsql curl libcurl3 \
-		libcurl3-dev php5-curl php5-xmlrpc php5-intl php5-mysql git-core && \
+	apt-get -y install mysql-client pwgen python-setuptools curl git unzip apache2 php5.6 \
+		php5.6-gd libapache2-mod-php5.6 postfix wget supervisor php5.6-pgsql curl libcurl3 \
+		libcurl3-dev php5.6-curl php5.6-xmlrpc php5.6-intl php5.6-mysql git-core && \
 	cd /tmp && \
-	git clone git://git.moodle.org/moodle.git --depth=1 && \
+	git clone -b MOODLE_31_STABLE git://git.moodle.org/moodle.git --depth=1 && \
 	mv /tmp/moodle/* /var/www/html/ && \
 	rm /var/www/html/index.html && \
 	chown -R www-data:www-data /var/www/html && \

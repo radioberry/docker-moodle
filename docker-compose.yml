@@ -1,7 +1,7 @@
 version: '2'
 services:
   moodle:
-    image: jhardison/moodle:latest
+    image: diorama/moodle:latest
     links:
       - moodle_db
     environment:
