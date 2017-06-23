@@ -26,6 +26,7 @@ script:
   - docker ps
   - curl --version
   - curl localhost:8080
+  - curl localhost:8080/admin/index.php
 
 after_script:
   - docker images
