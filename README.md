@@ -32,9 +32,15 @@ docker-compose up -d moodle moodle_db
 or
 Comment out docker-compose.yml's https-portal.
 ```
-# https-portal:
-# ......
-# ......
+#   https-portal:
+#     image: steveltn/https-portal:latest
+#     ports:
+#       - '80:80'
+#       - '443:443'
+#     links:
+#       - moodle
+#       - moodle_db
+# restart: always
 ```
 
 AWS Route53>Cloudfront>EC2(docker):
