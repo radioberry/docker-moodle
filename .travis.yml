@@ -12,6 +12,8 @@ branches:
 
 install:
 #  - docker build -t docker-moodle .
+  - git clone https://github.com/radioberry/docker-moodle.git
+  - ls
   - docker ps
 #  - docker-compose build
 
