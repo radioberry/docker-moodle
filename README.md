@@ -16,6 +16,10 @@ Moodle - the world's open source learning platform
 ```
 docker-compose up -d
 ```
+You can visit the following URL in a browser to get started:
+
+https://moodle.example.com
+
 
 ## Install
 
@@ -28,6 +32,14 @@ docker-compose build
 ## Contribution
 
 ## Deploy
+
+```
+cd docker-moodle
+emacs Dockerfile
+~
+docker-compose stop
+docker-compose up -d
+```
 
 ## Licence
 
