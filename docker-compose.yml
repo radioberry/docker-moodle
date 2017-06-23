@@ -12,8 +12,6 @@ services:
       DB_ENV_MYSQL_DATABASE: moodle
     ports:
       - "8080:80"
-    volumes:
-      - .log:/var/log
     restart: always
 
   moodle_db:
