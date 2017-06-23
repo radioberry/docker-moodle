@@ -1,7 +1,7 @@
 version: '2'
 services:
   moodle:
-    image: diorama/moodle:latest
+    image: jhardison/moodle:latest
     links:
       - moodle_db
     environment:
@@ -12,8 +12,6 @@ services:
       DB_ENV_MYSQL_DATABASE: moodle
     ports:
       - "8080:80"
-    volumes:
-      - .log:/var/log
     restart: always
 
   moodle_db:
@@ -24,7 +22,7 @@ services:
       MYSQL_USER: moodle
       MYSQL_PASSWORD: moodle
     ports:
-      - "3307:3307"
+      - "3306:3306"
     volumes:
       - .data/moodledb:/var/lib/mysql
     restart: always
