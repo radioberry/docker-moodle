@@ -7,9 +7,13 @@
 
 Moodle - the world's open source learning platform
 
+docker:
+ - https-portal
+ - moodle
+ - mysql 
+
 ## Demo
 
-## Requirement
 
 ## Usage
 
@@ -28,8 +32,6 @@ git clone https://github.com/radioberry/docker-moodle.git
 cd docker-moodle
 docker-compose build
 ```
-
-## Contribution
 
 ## Deploy
 
