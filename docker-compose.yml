@@ -1,5 +1,18 @@
 version: '2'
 services:
+  https-portal:
+    image: steveltn/https-portal:latest
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - moodle
+      - moodle_db
+    restart: always
+    environment:
+      DOMAINS: 'moodle.example.com -> http://moodle'
+      STAGE: 'production'
+      # FORCE_RENEW: 'true'
   moodle:
     image: diorama/moodle:latest
     links:
