@@ -11,25 +11,22 @@ branches:
     - staging-ci
 
 install:
-  - git clone https://github.com/radioberry/docker-moodle.git
-  - ls
-  - docker ps -a
-
+  - docker-compose build
+  
 before_script:
-#  - docker run -d --name DB -p 3307:3307 -e MYSQL_DATABASE=moodle -e MYSQL_USER=moodle -e MYSQL_PASSWORD=moodle centurylink/mysql
-#  - docker run -d -P --name moodle --link DB:DB -p 8080:80 docker-moodle
+  - docker images
   - docker-compose up -d
 
 script:
-  - docker ps
-  - sleep 10
-  - docker ps
-  - curl --version
-  - curl localhost:8080
-  - curl localhost:8080/admin/index.php
+  - docker-compose ps
+  - sleep 20
+  - curl localhost
+  - curl localhost/admin/index.php
+  - curl localhost:443
+  - curl localhost:443/admin/index.php
+
 
 after_script:
-  - docker images
   
 notifications:
   slack: diorama-radio:JaoyLeAlhZ8e6ugkadHEdteG
