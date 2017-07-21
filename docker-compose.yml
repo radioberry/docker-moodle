@@ -10,21 +10,21 @@ services:
       - moodle_db
     restart: always
     environment:
-      DOMAINS: 'moodle.example.com -> http://moodle'
-      STAGE: 'production'
+      DOMAINS: 'localhost -> http://moodle'
+      # STAGE: 'production'
       # FORCE_RENEW: 'true'
   moodle:
-    image: diorama/moodle:latest
-    links:
+    build: .
+    depends_on:
       - moodle_db
     environment:
-      MOODLE_URL: "https://example.com"
+      MOODLE_URL: "http://localhost"
       DB_PORT_3306_TCP_ADDR: moodle_db
       DB_ENV_MYSQL_USER: moodle
       DB_ENV_MYSQL_PASSWORD: moodle
       DB_ENV_MYSQL_DATABASE: moodle
-    ports:
-      - "8080:80"
+    # ports:
+    #   - "8080:80"
     restart: always
 
   moodle_db:
@@ -34,8 +34,11 @@ services:
       MYSQL_ROOT_PASSWORD: moodle
       MYSQL_USER: moodle
       MYSQL_PASSWORD: moodle
-    ports:
-      - "3307:3307"
+    # ports:
+    #   - "3307:3307"
     volumes:
-      - .data/moodledb:/var/lib/mysql
+      - /var/moodle/moodledb:/var/lib/mysql
     restart: always
+volumes:
+  moodledata: {}
+  moodledb: {}
