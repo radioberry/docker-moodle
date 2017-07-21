@@ -23,8 +23,6 @@ services:
       DB_ENV_MYSQL_USER: moodle
       DB_ENV_MYSQL_PASSWORD: moodle
       DB_ENV_MYSQL_DATABASE: moodle
-      reverseproxy: false
-      sslproxy: false
     ports:
       - "8080:80"
     restart: always
