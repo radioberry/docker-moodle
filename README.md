@@ -8,9 +8,12 @@
 Moodle - the world's open source learning platform
 
 Configuration of docker-compose:
- - https-portal
  - moodle
- - mysql 
+ - mysql
+
+Collaboration
+ - nginx-proxy
+ - docker-letsencrypt-nginx-proxy-companion
 
 ## Demo
 

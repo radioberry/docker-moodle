@@ -1,24 +1,14 @@
 version: '2'
 services:
-  https-portal:
-    image: steveltn/https-portal:latest
-    ports:
-      - '80:80'
-      - '443:443'
-    links:
-      - moodle
-      - moodle_db
-    restart: always
-    environment:
-      DOMAINS: 'moodle.example.com -> http://moodle'
-      STAGE: 'production'
-      # FORCE_RENEW: 'true'
   moodle:
-    image: diorama/moodle:latest
+    build:
+      context: .
     links:
       - moodle_db
     environment:
-      MOODLE_URL: "https://example.com"
+      MOODLE_URL: "http://localhost:8050"
+      BOOL_REVERSEPROXY: "false"
+      BOOL_SSLPROXY: "false"
       DB_PORT_3306_TCP_ADDR: moodle_db
       DB_ENV_MYSQL_USER: moodle
       DB_ENV_MYSQL_PASSWORD: moodle
@@ -26,7 +16,7 @@ services:
     ports:
       - "8080:80"
     restart: always
-
+    env_file: .env
   moodle_db:
     image: centurylink/mysql:latest
     environment:
@@ -39,3 +29,7 @@ services:
     volumes:
       - .data/moodledb:/var/lib/mysql
     restart: always
+networks:
+ default:
+   external:
+      name: webproxy
