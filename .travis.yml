@@ -20,8 +20,8 @@ before_script:
 script:
   - docker-compose ps
   - sleep 20
-  - curl localhost:8080
-  - curl localhost:8080/admin/index.php
+  - curl localhost
+  - curl localhost/admin/index.php
 
 after_script:
   
