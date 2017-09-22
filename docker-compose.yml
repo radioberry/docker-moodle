@@ -16,6 +16,8 @@ services:
       - "80:80"
     restart: always
     env_file: .env
+    volumes:
+      - .data/moodledata:/var/moodledata
   moodle_db:
     image: centurylink/mysql:latest
     container_name: moodle_db
@@ -35,4 +37,5 @@ services:
 #    external:
 #       name: webproxy
 volumes:
+  moodledata: {}
   moodledb: {}
