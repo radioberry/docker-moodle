@@ -34,3 +34,5 @@ services:
 #  default:
 #    external:
 #       name: webproxy
+volumes:
+  moodledb: {}
