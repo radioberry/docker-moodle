@@ -2,34 +2,35 @@ version: '2'
 services:
   moodle:
     build:
-      context: .
+      context: .
+    container_name: moodle
     links:
       - moodle_db
     environment:
-      MOODLE_URL: "http://localhost:8050"
-      BOOL_REVERSEPROXY: "false"
-      BOOL_SSLPROXY: "false"
+      MOODLE_URL: "http://example.com"
       DB_PORT_3306_TCP_ADDR: moodle_db
       DB_ENV_MYSQL_USER: moodle
       DB_ENV_MYSQL_PASSWORD: moodle
       DB_ENV_MYSQL_DATABASE: moodle
     ports:
-      - "8080:80"
+      - "80:80"
     restart: always
     env_file: .env
   moodle_db:
     image: centurylink/mysql:latest
+    container_name: moodle_db
     environment:
       MYSQL_DATABASE: moodle
       MYSQL_ROOT_PASSWORD: moodle
       MYSQL_USER: moodle
       MYSQL_PASSWORD: moodle
-    ports:
-      - "3307:3307"
     volumes:
       - .data/moodledb:/var/lib/mysql
     restart: always
-networks:
- default:
-   external:
-      name: webproxy
+
+# nginx-proxy networksettings
+#
+# networks:
+#  default:
+#    external:
+#       name: webproxy
