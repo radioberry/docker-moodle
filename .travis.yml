@@ -4,26 +4,24 @@ sudo: required
 
 services:
   - docker
-  
+
 branches:
-  only: 
+  only:
     - master
     - staging-ci
 
 install:
   - docker-compose build
-  
+
 before_script:
-  - docker images
   - docker-compose up -d
 
 script:
   - docker-compose ps
   - sleep 20
-  - curl localhost
-  - curl localhost/admin/index.php
+  - curl　-L -I localhost
 
 after_script:
-  
+
 notifications:
   slack: diorama-radio:JaoyLeAlhZ8e6ugkadHEdteG

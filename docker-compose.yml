@@ -2,30 +2,26 @@ version: '2'
 services:
   moodle:
     build:
-      context: .
+      context: ./ver/v3.1.5
+      args:
+        - BOOL_REVERSEPROXY='false'
+        - BOOL_SSLPROXY='false'
+    image: moodle:v3.1.5
     container_name: moodle
     links:
       - moodle_db
-    environment:
-      MOODLE_URL: "http://example.com"
-      DB_PORT_3306_TCP_ADDR: moodle_db
-      DB_ENV_MYSQL_USER: moodle
-      DB_ENV_MYSQL_PASSWORD: moodle
-      DB_ENV_MYSQL_DATABASE: moodle
+    env_file: .env
+    # environment:
+    #   MOODLE_URL: "http://example.com"
     ports:
       - "80:80"
     restart: always
-    env_file: .env
-    volumes:
-      - .data/moodledata:/var/moodledata
+    # volumes:
+    #   - .data/moodledata:/var/moodledata
   moodle_db:
     image: centurylink/mysql:latest
     container_name: moodle_db
-    environment:
-      MYSQL_DATABASE: moodle
-      MYSQL_ROOT_PASSWORD: moodle
-      MYSQL_USER: moodle
-      MYSQL_PASSWORD: moodle
+    env_file: .env
     volumes:
       - .data/moodledb:/var/lib/mysql
     restart: always
@@ -37,5 +33,5 @@ services:
 #    external:
 #       name: webproxy
 volumes:
-  moodledata: {}
+  # moodledata: {}
   moodledb: {}
