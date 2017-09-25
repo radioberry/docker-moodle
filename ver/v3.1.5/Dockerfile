@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ENV MOODLE_URL http://example.com
 ENV MOODLE_VER -b v3.1.5
-ADD ./foreground.sh /etc/apache2/foreground.sh
+ADD ../../foreground.sh /etc/apache2/foreground.sh
 
 RUN apt-get update && \
 	apt-get -y install mysql-client pwgen python-setuptools curl git unzip apache2 php \
@@ -17,7 +17,7 @@ RUN apt-get update && \
 		libcurl3-dev php-curl php-xmlrpc php-intl php-mysql git-core php-xml php-mbstring php-zip php-soap && \
 	cd /tmp && \
 	git clone ${MOODLE_VER} git://git.moodle.org/moodle.git --depth=1
-COPY moodle-config.php /var/www/html/config.php
+COPY ../../moodle-config.php /var/www/html/config.php
 RUN mv /tmp/moodle/* /var/www/html/ && \
 	rm /var/www/html/index.html && \
 	chown -R www-data:www-data /var/www/html && \
