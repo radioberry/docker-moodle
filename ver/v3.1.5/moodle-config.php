@@ -276,11 +276,11 @@ $CFG->admin = 'admin';
 //
 // Enable when setting up advanced reverse proxy load balancing configurations,
 // it may be also necessary to enable this when using port forwarding.
-$CFG->reverseproxy = getenv('BOOL_REVERSEPROXY');
+$CFG->reverseproxy = false;
 //
 // Enable when using external SSL appliance for performance reasons.
 // Please note that site may be accessible via https: or https:, but not both!
-$CFG->sslproxy = getenv('BOOL_SSLPROXY');
+$CFG->sslproxy = false;
 //
 // This setting will cause the userdate() function not to fix %d in
 // date strings, and just let them show with a zero prefix.
