@@ -17,7 +17,7 @@ RUN apt-get update && \
 		libcurl3-dev php-curl php-xmlrpc php-intl php-mysql git-core php-xml php-mbstring php-zip php-soap && \
 	cd /tmp && \
 	git clone ${MOODLE_VER} git://git.moodle.org/moodle.git --depth=1
-COPY moodle-config.php /var/www/html/config.php
+COPY ./moodle-config.php /var/www/html/config.php
 RUN mv /tmp/moodle/* /var/www/html/ && \
 	rm /var/www/html/index.html && \
 	chown -R www-data:www-data /var/www/html && \
