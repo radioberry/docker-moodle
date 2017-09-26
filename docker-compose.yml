@@ -14,7 +14,7 @@ services:
     # environment:
     #   MOODLE_URL: "http://example.com"
     ports:
-      - "80:80"
+      - "8080:80"
     restart: always
     # volumes:
     #   - .data/moodledata:/var/moodledata
