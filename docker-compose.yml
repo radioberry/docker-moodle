@@ -6,21 +6,20 @@ services:
       args:
         - BOOL_REVERSEPROXY='false'
         - BOOL_SSLPROXY='false'
+        - MOODLE_URL="http://localhost"
     image: moodle:v3.1.5
     container_name: moodle
     links:
       - moodle_db
     env_file: .env
     environment:
-      MOODLE_URL: http://localhost:8080
+      # MOODLE_URL: "http://localhost"
       DB_PORT_3306_TCP_ADDR: moodle_db
       DB_ENV_MYSQL_USER: moodle
       DB_ENV_MYSQL_PASSWORD: moodle
       DB_ENV_MYSQL_DATABASE: moodle
-    # environment:
-    #   MOODLE_URL: "http://example.com"
     ports:
-      - "8080:80"
+      - "80:80"
     restart: always
     # volumes:
     #   - .data/moodledata:/var/moodledata

@@ -19,7 +19,7 @@ before_script:
 script:
   - docker-compose ps
   - sleep 20
-  - curl -L localhost:8080
+  - curl -LI localhost
 
 after_script:
 
