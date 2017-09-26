@@ -11,6 +11,12 @@ services:
     links:
       - moodle_db
     env_file: .env
+    environment:
+      MOODLE_URL: http://localhost:8080
+      DB_PORT_3306_TCP_ADDR: moodle_db
+      DB_ENV_MYSQL_USER: moodle
+      DB_ENV_MYSQL_PASSWORD: moodle
+      DB_ENV_MYSQL_DATABASE: moodle
     # environment:
     #   MOODLE_URL: "http://example.com"
     ports:
@@ -21,7 +27,11 @@ services:
   moodle_db:
     image: centurylink/mysql:latest
     container_name: moodle_db
-    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: moodle
+      DB_ENV_MYSQL_USER: moodle
+      DB_ENV_MYSQL_PASSWORD: moodle
+      DB_ENV_MYSQL_DATABASE: moodle
     volumes:
       - .data/moodledb:/var/lib/mysql
     restart: always
